@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
     [SerializeField]int attackPower = 1;
 
     [SerializeField] public UnityEvent<Player> PlayerDeathEvent;
+    [SerializeField] public UnityEvent<int> OnAttackPowerChanged;
+    [SerializeField] public UnityEvent<int, int> OnHealthChanged;
+
 
     public int Health { 
         get { return health; } 
@@ -20,9 +23,16 @@ public class Player : MonoBehaviour
             {
                 Die();
             }
+            OnHealthChanged.Invoke(health, maxHealth);
         } 
     }
-    public int AttackPower { get { return attackPower; } set { attackPower = value; } }
+    public int AttackPower { 
+        get { return attackPower; } 
+        set { 
+            attackPower = value;
+            OnAttackPowerChanged.Invoke(attackPower);
+        } 
+    }
 
 
     void Die()
