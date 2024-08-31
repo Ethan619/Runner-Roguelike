@@ -4,14 +4,26 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] List<LevelPart> parts;
+    private LevelPart lastSpawnedPart;
 
     void Start()
     {
         SpawnRandomLevel();
+        SpawnRandomLevel();
+        SpawnRandomLevel();
+        SpawnRandomLevel();
+
     }
 
-    void SpawnRandomLevel()
+    public void SpawnRandomLevel()
     {
-        Instantiate(parts.Random());
+        Vector3 spawnPosition = Vector3.zero;
+        if (lastSpawnedPart != null)
+        {
+            spawnPosition = lastSpawnedPart.GetRightMidpointPosition();
+        }
+
+        LevelPart newPart = Instantiate(parts.Random(), spawnPosition, Quaternion.identity);
+        lastSpawnedPart = newPart;
     }
 }

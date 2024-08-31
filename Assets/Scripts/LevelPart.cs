@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class LevelPart : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public Transform rightMidpoint;
 
-    // Update is called once per frame
-    void Update()
+    public Vector3 GetRightMidpointPosition()
     {
-        
+        return rightMidpoint.position;
     }
 }
