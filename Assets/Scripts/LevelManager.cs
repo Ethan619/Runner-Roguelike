@@ -17,13 +17,14 @@ public class LevelManager : MonoBehaviour
 
     public void SpawnRandomLevel()
     {
+        LevelPart newPart = Instantiate(parts.Random());
+
         Vector3 spawnPosition = Vector3.zero;
         if (lastSpawnedPart != null)
         {
-            spawnPosition = lastSpawnedPart.GetRightMidpointPosition();
+            spawnPosition = lastSpawnedPart.GetRightMidpointPosition() + (newPart.transform.position - newPart.GetLeftMidpointPosition());
         }
-
-        LevelPart newPart = Instantiate(parts.Random(), spawnPosition, Quaternion.identity);
+        newPart.transform.position = spawnPosition;
         lastSpawnedPart = newPart;
     }
 }
