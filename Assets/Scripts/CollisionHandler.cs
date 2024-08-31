@@ -7,7 +7,7 @@ public class CollisionHandler : MonoBehaviour
     {
         if (collision.CompareTag("Wall"))
         {
-            //Kill? Hurt? Do we even really need the walls?
+            player.Health -= 3;
         }else if (collision.CompareTag("Enemy"))
         {
             Enemy enemy = collision.GetComponent<Enemy>();
@@ -15,13 +15,14 @@ public class CollisionHandler : MonoBehaviour
             {
                 player.Health -= enemy.AttackPower - player.AttackPower;
             }
-                Destroy(enemy);
+            Destroy(enemy.gameObject);
             
         }else if (collision.CompareTag("PowerUp"))
         {
             PowerUp powerUp = collision.GetComponent<PowerUp>();
             player.Health += powerUp.health;
             player.AttackPower += powerUp.attackPower;
+            Destroy(powerUp.gameObject);
         }
     }
 }
