@@ -288,6 +288,9 @@ MonoBehaviour:
   - {fileID: 3048760507734389515, guid: 6a05b7cf7379e1b488f836836f927979, type: 3}
   - {fileID: -3057082839001315199, guid: 507ca5fc2431b2846bd5c568c63a2763, type: 3}
   - {fileID: -5267941626574385324, guid: 023754e9b83c17f4d8fce331b81daf26, type: 3}
+  player: {fileID: 1714312632}
+  spawnDistance: 10
+  maxSpawnedParts: 3
 --- !u!4 &1007784558
 Transform:
   m_ObjectHideFlags: 0
